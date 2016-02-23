@@ -4,8 +4,6 @@
 
 A seed project for creating Isomorphic apps with React and Flux architecture
 
-Read full article [here](http://engineering.devmag.io/post/1/creating-an-isomorphic-blogging-app-using-react-and-flux)
-
 ### How to run 
 
 1. Install Gulp - `npm install -g gulp`
