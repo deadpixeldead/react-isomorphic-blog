@@ -25,14 +25,18 @@ var SinglePostView = React.createClass({
 
     render : function() {
         return (
-            <div className="full-post">
-                <h1 className="post-title">{this.state.currentPost.title}</h1>
-                <div className="author-details">
-                    <img src={this.state.currentPost.author.photo} className="author-photo"/>
-                    <span className="author-name">{this.state.currentPost.author.name}</span>
+            <div className="full-posts-n">
+                <div className="header-section">
+                    <h1 className="post-title">{this.state.currentPost.title}</h1>
+                    <div className="author-details">
+                        <img src={this.state.currentPost.author.photo} className="author-photo"/>
+                        <span className="author-name">{this.state.currentPost.author.name}</span>
+                    </div>   
                 </div>
-                <div className="post-content">
-                    {this.state.currentPost.description}
+                <div className="text-section">
+                    <div className="post-content">
+                        {this.state.currentPost.description}
+                    </div>
                 </div>
             </div>
         )

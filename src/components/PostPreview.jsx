@@ -19,10 +19,15 @@ var PostPreview = React.createClass({
 
     render : function() {
         return (
-            <a href="#" className="single-post" onClick={this.loadPost}>
-                <div className="post-title">{this.props.post.title}</div>
-                <div className="author-details"><img src={this.props.post.author.photo} className="author-photo"/><span className="author-name">{this.props.post.author.name}</span></div>
-            </a>
+            <div className="small-card">
+                <div className="card-inner">
+                    <div className="author-details"><img src={this.props.post.author.photo} className="author-photo"/><div><span className="author-name">{this.props.post.author.name}</span></div></div>
+                    <a href="#" className="single-post" onClick={this.loadPost}>
+                        <div className="post-title">{this.props.post.title}</div>
+                    </a>
+                    <article>{this.props.post.preview}</article>
+                </div>
+            </div>
         )
     }
 });
