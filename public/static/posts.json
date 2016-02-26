@@ -27,6 +27,7 @@
     "slug" : "understanding-foundation-5-grid-system-tutorial",
     "title" : "Understanding Foundation 5 Grid System — Tutorial",
     "description" : "A grid system is used to place the website's elements in proper locations and control the overall structure of the website. It is a virtual structure of rows and columns, which when intersect, create rectangular containers for placing other elements.",
+    "path": "/static/3.md",
     "preview" : "React, developed by Facebook, is an open source library for building User Interfaces. As the front end...",
     "author" : {
       "photo" : "/images/nikolas.jpg",
@@ -38,6 +39,7 @@
     "slug" : "creating-a-social-news-sharing-app-in-20-minutes-with-meteor",
     "title" : "Creating a social news sharing app in 20 minutes with Meteor",
     "preview" : "React, developed by Facebook, is an open source library for building User Interfaces. As the front end...",
+    "path": "/static/4.md",
     "description" : "Meteor 1.0 is already out and everybody is talking about its reactiveness. In this article I will show you how to create a basic social news sharing app (in other words a Hacker News clone) in just 20 minutes with Meteor. Obviously, the end product won't be as feature rich as Hacker News. But it will be simple and easy to extend. The source code is available on GitHub.",
     "author" : {
       "photo" : "/images/nikolas.jpg",
@@ -49,6 +51,7 @@
     "slug" : "introduction-to-javascript-immutability-with-immutablejs",
     "title" : "Introduction to JavaScript Immutability with Immutable.js",
     "description" : "Immutable.js is a JavaScript library by Facebook that lets you work with persistent immutable data collections. Immutability means once a collection is created, it can't be changed (mutated). With Immutable.js, operations like push, unshift, set etc will return new immutable collections instead of changing the original collection. So, let's see why immutability is useful and explore how Immutable.js lets you write immutable code.",
+    "path": "/static/5.md",
     "preview" : "React, developed by Facebook, is an open source library for building User Interfaces. As the front end...",
     "author" : {
       "photo" : "/images/nikolas.jpg",
