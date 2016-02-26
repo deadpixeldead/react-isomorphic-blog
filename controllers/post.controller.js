@@ -24,23 +24,29 @@ exports.loadPostsViaAjax = function(req,res){
 
 exports.showSinglePost = function(req,res,next){
     var id = req.params.id;
-
+    console.log('ahaaa');
     request.get(config.baseUrl+'/static/posts.json',function(err,response){
 
         var posts = response.body;
 
         posts.forEach(function(post){
             if(post.id === parseInt(id,10)){
-                res.locals.data = {
-                    "PostStore" : {
-                        "currentPost" : post
-                    }
-                };
-                next();
+                console.log('bbbb');
+                request.get(config.baseUrl+'/static/' + id + '.md',function(err,response) {
+                    post['content'] = response.text;
+                    console.log(post);
+                    res.locals.data = {
+                        "PostStore" : {
+                            "currentPost" : post
+                        }
+                    };
+                    next();
+                });
+
             }
         });
 
-        next();
+        //next();
     });
 }
 
@@ -49,7 +55,11 @@ exports.loadSinglePostViaAjax = function(req,res){
     request.get(config.baseUrl+'/static/posts.json',function(err,response){
         response.body.forEach(function(post){
             if(post.id === parseInt(id,10)){
-                return res.json(post);
+
+                request.get(config.baseUrl+'/static/' + id + '.md',function(err,response) {
+                            post['content'] = response.text;
+                            return res.json(post);
+                });
             }
         });
     });

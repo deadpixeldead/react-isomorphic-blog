@@ -1,5 +1,12 @@
 var React = require('react/addons');
 var PostStore = require('../stores/PostStore');
+var ReactMarkdown = require('react-markdown');
+//var request = require('superagent'),
+//    config = require('../../config');
+var Remarkable = require('remarkable');
+var md = new Remarkable();
+
+var input = '# This is a header\n\nAnd this is a paragraph';
 
 var SinglePostView = React.createClass({
 
@@ -24,6 +31,9 @@ var SinglePostView = React.createClass({
     },
 
     render : function() {
+
+        console.log(this.state.currentPost);
+        console.log(md.render(this.state.currentPost.content));
         return (
             <div className="full-posts-n">
                 <div className="header-section">
@@ -34,9 +44,7 @@ var SinglePostView = React.createClass({
                     </div>   
                 </div>
                 <div className="text-section">
-                    <div className="post-content">
-                        {this.state.currentPost.description}
-                    </div>
+                    <div className="post-content" dangerouslySetInnerHTML={{__html: md.render(this.state.currentPost.content)}}/>
                 </div>
             </div>
         )
