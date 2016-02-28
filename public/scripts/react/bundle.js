@@ -2957,7 +2957,7 @@ var canUseDOM = !!(
 module.exports = canUseDOM;
 },{}],6:[function(require,module,exports){
 /**
- * lodash 4.0.3 (Custom Build) <https://lodash.com/>
+ * lodash 4.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -3015,8 +3015,7 @@ var objectToString = objectProto.toString;
  */
 function assignValue(object, key, value) {
   var objValue = object[key];
-  if ((!eq(objValue, value) ||
-        (eq(objValue, objectProto[key]) && !hasOwnProperty.call(object, key))) ||
+  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
       (value === undefined && !(key in object))) {
     object[key] = value;
   }
@@ -3326,7 +3325,7 @@ module.exports = assign;
 
 },{"lodash.keys":7,"lodash.rest":36}],7:[function(require,module,exports){
 /**
- * lodash 4.0.3 (Custom Build) <https://lodash.com/>
+ * lodash 4.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -3477,7 +3476,7 @@ function indexKeys(object) {
  */
 function isPrototype(value) {
   var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+      proto = (isFunction(Ctor) && Ctor.prototype) || objectProto;
 
   return value === proto;
 }
@@ -8144,7 +8143,7 @@ function escapeHtml(html) {
 
 },{}],35:[function(require,module,exports){
 /**
- * lodash 4.0.2 (Custom Build) <https://lodash.com/>
+ * lodash 4.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -8251,10 +8250,7 @@ function isPlainObject(value) {
       objectToString.call(value) != objectTag || isHostObject(value)) {
     return false;
   }
-  var proto = objectProto;
-  if (typeof value.constructor == 'function') {
-    proto = getPrototypeOf(value);
-  }
+  var proto = getPrototypeOf(value);
   if (proto === null) {
     return true;
   }
@@ -44032,7 +44028,7 @@ var SinglePostView = React.createClass({displayName: "SinglePostView",
         console.log(this.state.currentPost);
         console.log(md.render(this.state.currentPost.content));
         return (
-            React.createElement("div", {className: "full-posts-n"}, 
+            React.createElement("div", {className: "markdown-body"}, 
                 React.createElement("div", {className: "header-section"}, 
                     React.createElement("h1", {className: "post-title"}, this.state.currentPost.title), 
                     React.createElement("div", {className: "author-details"}, 

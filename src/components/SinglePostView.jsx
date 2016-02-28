@@ -35,7 +35,7 @@ var SinglePostView = React.createClass({
         console.log(this.state.currentPost);
         console.log(md.render(this.state.currentPost.content));
         return (
-            <div className="full-posts-n">
+            <div className="markdown-body">
                 <div className="header-section">
                     <h1 className="post-title">{this.state.currentPost.title}</h1>
                     <div className="author-details">
