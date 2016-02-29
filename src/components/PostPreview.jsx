@@ -10,6 +10,7 @@ var PostPreview = React.createClass({
     },
 
     loadPost : function(e){
+        console.log('aha');
         e.preventDefault();
         var self = this;
         PostActions.loadSinglePost(this.props.post.id,function(){

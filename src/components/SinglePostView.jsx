@@ -32,8 +32,6 @@ var SinglePostView = React.createClass({
 
     render : function() {
 
-        console.log(this.state.currentPost);
-        console.log(md.render(this.state.currentPost.content));
         return (
             <div className="markdown-body">
                 <div className="header-section">

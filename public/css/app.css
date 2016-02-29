@@ -11,7 +11,8 @@ body{
     background: #EEE;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    background: url(../images/blue-triangles.jpg) no-repeat center center fixed;
+    padding-left: 300px;
+    transition: padding 500ms ease-in-out;
 }
 
 .header-section {
@@ -42,7 +43,6 @@ img {
     padding-right: 20%;
     padding-top: 100px;
     font-size: 24px;
-    background-color: #FAFAFA;
 }
 
 .small-card {
@@ -71,6 +71,27 @@ img {
     font-weight: 600;
 }
 
+.menu-closed {
+    padding: 0;
+}
+
+
+.side-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    transition: left 500ms ease-in-out;
+}
+
+.content {
+    position: relative;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+    border-left: solid 1px #e0dfdf;
+    box-shadow: 0 0 40px 0 #ddd;
+    transition: border-left-color 500ms ease-in-out;
+}
 /*
 .body-container{
     width: 900px;
