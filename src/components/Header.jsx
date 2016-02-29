@@ -16,26 +16,39 @@ var Header = React.createClass({
         }).bind(this));
     },
 
-    hideMenu : function(e){
-        e.preventDefault();
-        var orig = document.body.className;
+    hideMenu : function(){
         document.body.className = "menu-closed";
     },
 
-    showMenu : function(e){
-        e.preventDefault();
-        var orig = document.body.className;
+    showMenu : function(){
         document.body.className = " ";
+    },
+
+    toggleMenu : function(e){
+        e.preventDefault();
+        var classOfMenu = document.getElementById("menu-icon").className;
+        console.log(classOfMenu);
+        if (classOfMenu == "active") {
+            this.hideMenu();
+            document.getElementById("menu-icon").className = "";
+        } else {
+            this.showMenu();
+
+            document.getElementById("menu-icon").className = "active";
+        }
     },
 
     render : function() {
         return (
             <div className="header">
-                <h1>
-                    <a href="#" onClick={this.hideMenu}>Arrow </a>
-                    <a href="#" onClick={this.showMenu}>Burger</a>
-                    <a href="#" onClick={this.showAllPosts}>   |  Recent Posts</a>
-                </h1>
+                <div onClick={this.toggleMenu} id="menu-icon" className="active">
+                    <div className="burger"></div>
+                </div>
+                <div className="recent">
+                    <h1 onClick={this.showAllPosts}>
+                        Recent Posts
+                    </h1>
+                </div>
             </div>
         )
     }

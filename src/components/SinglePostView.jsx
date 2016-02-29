@@ -33,7 +33,7 @@ var SinglePostView = React.createClass({
     render : function() {
 
         return (
-            <div className="markdown-body">
+            <div>
                 <div className="header-section">
                     <h1 className="post-title">{this.state.currentPost.title}</h1>
                     <div className="author-details">
@@ -41,7 +41,7 @@ var SinglePostView = React.createClass({
                         <span className="author-name">{this.state.currentPost.author.name}</span>
                     </div>   
                 </div>
-                <div className="text-section">
+                <div className="text-section markdown-body">
                     <div className="post-content" dangerouslySetInnerHTML={{__html: md.render(this.state.currentPost.content)}}/>
                 </div>
             </div>

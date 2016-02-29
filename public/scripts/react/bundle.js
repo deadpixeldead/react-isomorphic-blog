@@ -43056,25 +43056,38 @@ var Header = React.createClass({displayName: "Header",
         }).bind(this));
     },
 
-    hideMenu : function(e){
-        e.preventDefault();
-        var orig = document.body.className;
+    hideMenu : function(){
         document.body.className = "menu-closed";
     },
 
-    showMenu : function(e){
-        e.preventDefault();
-        var orig = document.body.className;
+    showMenu : function(){
         document.body.className = " ";
+    },
+
+    toggleMenu : function(e){
+        e.preventDefault();
+        var classOfMenu = document.getElementById("menu-icon").className;
+        console.log(classOfMenu);
+        if (classOfMenu == "active") {
+            this.hideMenu();
+            document.getElementById("menu-icon").className = "";
+        } else {
+            this.showMenu();
+
+            document.getElementById("menu-icon").className = "active";
+        }
     },
 
     render : function() {
         return (
             React.createElement("div", {className: "header"}, 
-                React.createElement("h1", null, 
-                    React.createElement("a", {href: "#", onClick: this.hideMenu}, "Arrow "), 
-                    React.createElement("a", {href: "#", onClick: this.showMenu}, "Burger"), 
-                    React.createElement("a", {href: "#", onClick: this.showAllPosts}, "   |  Recent Posts")
+                React.createElement("div", {onClick: this.toggleMenu, id: "menu-icon", className: "active"}, 
+                    React.createElement("div", {className: "burger"})
+                ), 
+                React.createElement("div", {className: "recent"}, 
+                    React.createElement("h1", {onClick: this.showAllPosts}, 
+                        "Recent Posts"
+                    )
                 )
             )
         )
@@ -43186,9 +43199,25 @@ var SideBar = React.createClass({displayName: "SideBar",
     },
 
     render : function() {
+
+        var color1 = {backgroundColor: "#7f8c8d"};
+        var color2 = {backgroundColor: "#3498db"};
         return (
             React.createElement("section", {className: "side-bar"}, 
-                React.createElement("h1", null, "this is some section")
+                React.createElement("header", {className: "side-header"}, 
+                    React.createElement("a", {className: "side-avatar", href: "#"}, 
+                        React.createElement("img", {src: "/images/nikolas.jpg", alt: "Nikolas Haag | Dev Blog", width: "100", height: "100"})
+                        ), 
+                        React.createElement("h2", {className: "side-heading"}, "Nikolas Haag /  ", React.createElement("br", null), " Frontend Developer at the internets"), 
+                            React.createElement("ul", {className: "social-icons"}, 
+                                React.createElement("li", null, 
+                                    React.createElement("a", {className: "btn-social fa-codepen", href: "http://codepen.io/dead_pixel/", style: color1})
+                                ), 
+                                React.createElement("li", null, 
+                                    React.createElement("a", {className: "btn-social fa-twitter", href: "http://twitter.com/", style: color2})
+                                )
+                            )
+                )
             )
         )
     }
@@ -43232,7 +43261,7 @@ var SinglePostView = React.createClass({displayName: "SinglePostView",
     render : function() {
 
         return (
-            React.createElement("div", {className: "markdown-body"}, 
+            React.createElement("div", null, 
                 React.createElement("div", {className: "header-section"}, 
                     React.createElement("h1", {className: "post-title"}, this.state.currentPost.title), 
                     React.createElement("div", {className: "author-details"}, 
@@ -43240,7 +43269,7 @@ var SinglePostView = React.createClass({displayName: "SinglePostView",
                         React.createElement("span", {className: "author-name"}, this.state.currentPost.author.name)
                     )
                 ), 
-                React.createElement("div", {className: "text-section"}, 
+                React.createElement("div", {className: "text-section markdown-body"}, 
                     React.createElement("div", {className: "post-content", dangerouslySetInnerHTML: {__html: md.render(this.state.currentPost.content)}})
                 )
             )
