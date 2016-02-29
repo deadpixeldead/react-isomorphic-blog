@@ -18,7 +18,7 @@ window.onload = function(){
     });
 }
 
-},{"./alt":321,"./routes.jsx":328,"iso":33,"react-router":66,"react/addons":81}],2:[function(require,module,exports){
+},{"./alt":321,"./routes.jsx":329,"iso":33,"react-router":66,"react/addons":81}],2:[function(require,module,exports){
 var config = {
     baseUrl : "http://localhost:8080"
 }
@@ -43019,12 +43019,14 @@ var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
 var Header = require('./Header.jsx');
 var SideBar = require('./SideBar.jsx');
+var Landing = require('./Landing.jsx');
 
 var App = React.createClass({displayName: "App",
 
     render : function() {
         return (
             React.createElement("div", {className: "body-container"}, 
+                React.createElement(Landing, null), 
                 React.createElement(SideBar, null), 
                 React.createElement("div", {className: "content"}, 
                     React.createElement(Header, null), 
@@ -43037,7 +43039,7 @@ var App = React.createClass({displayName: "App",
 
 module.exports = App;
 
-},{"./Header.jsx":323,"./SideBar.jsx":326,"react-router":66,"react/addons":81}],323:[function(require,module,exports){
+},{"./Header.jsx":323,"./Landing.jsx":324,"./SideBar.jsx":327,"react-router":66,"react/addons":81}],323:[function(require,module,exports){
 var React = require('react/addons');
 var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
@@ -43100,6 +43102,32 @@ module.exports = Header;
 var React = require('react/addons');
 var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
+var PostActions = require('../actions/PostActions');
+
+var SideBar = React.createClass({displayName: "SideBar",
+
+    contextTypes: {
+        router: React.PropTypes.func
+    },
+
+    render : function() {
+
+        return (
+            React.createElement("section", {className: "full-page"}, 
+                React.createElement("h1", null, "Hello! This is some random text."), 
+
+                React.createElement("div", {className: "arrow"}, "A")
+            )
+        )
+    }
+});
+
+module.exports = SideBar;
+
+},{"../actions/PostActions":320,"react-router":66,"react/addons":81}],325:[function(require,module,exports){
+var React = require('react/addons');
+var RouteHandler = require('react-router').RouteHandler;
+var Link = require('react-router').Link;
 var PostStore = require('../stores/PostStore');
 var PostPreview = require('./PostPreview.jsx');
 
@@ -43141,7 +43169,7 @@ var PostListView = React.createClass({displayName: "PostListView",
 
 module.exports = PostListView;
 
-},{"../stores/PostStore":329,"./PostPreview.jsx":325,"react-router":66,"react/addons":81}],325:[function(require,module,exports){
+},{"../stores/PostStore":330,"./PostPreview.jsx":326,"react-router":66,"react/addons":81}],326:[function(require,module,exports){
 var React = require('react/addons');
 var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
@@ -43179,7 +43207,7 @@ var PostPreview = React.createClass({displayName: "PostPreview",
 
 module.exports = PostPreview;
 
-},{"../actions/PostActions":320,"react-router":66,"react/addons":81}],326:[function(require,module,exports){
+},{"../actions/PostActions":320,"react-router":66,"react/addons":81}],327:[function(require,module,exports){
 var React = require('react/addons');
 var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
@@ -43225,7 +43253,7 @@ var SideBar = React.createClass({displayName: "SideBar",
 
 module.exports = SideBar;
 
-},{"../actions/PostActions":320,"react-router":66,"react/addons":81}],327:[function(require,module,exports){
+},{"../actions/PostActions":320,"react-router":66,"react/addons":81}],328:[function(require,module,exports){
 var React = require('react/addons');
 var PostStore = require('../stores/PostStore');
 var ReactMarkdown = require('react-markdown');
@@ -43279,7 +43307,7 @@ var SinglePostView = React.createClass({displayName: "SinglePostView",
 
 module.exports = SinglePostView;
 
-},{"../stores/PostStore":329,"react-markdown":41,"react/addons":81,"remarkable":257}],328:[function(require,module,exports){
+},{"../stores/PostStore":330,"react-markdown":41,"react/addons":81,"remarkable":257}],329:[function(require,module,exports){
 var React = require('react/addons');
 var Route = require('react-router').Route;
 var PostListView = require('./components/PostListView.jsx');
@@ -43295,7 +43323,7 @@ var routes = (
 
 module.exports = routes;
 
-},{"./components/App.jsx":322,"./components/PostListView.jsx":324,"./components/SinglePostView.jsx":327,"react-router":66,"react/addons":81}],329:[function(require,module,exports){
+},{"./components/App.jsx":322,"./components/PostListView.jsx":325,"./components/SinglePostView.jsx":328,"react-router":66,"react/addons":81}],330:[function(require,module,exports){
 /**
  * Created by Sandeep on 28/04/15.
  */
