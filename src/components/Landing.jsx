@@ -26,7 +26,7 @@ var SideBar = React.createClass({
         return (
             <section id="full-page">
                 <div id="big-card">
-                    <h1>Nikolas Haag / dead pixel</h1>
+                    <h1>Nikolas Haag Test / dead pixel</h1>
                     <div className="icon-wrapper">
                         <i className="social"></i>
                         <i className="social"></i>

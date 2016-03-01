@@ -43127,7 +43127,7 @@ var SideBar = React.createClass({displayName: "SideBar",
         return (
             React.createElement("section", {id: "full-page"}, 
                 React.createElement("div", {id: "big-card"}, 
-                    React.createElement("h1", null, "Nikolas Haag / dead pixel"), 
+                    React.createElement("h1", null, "Nikolas Haag Test / dead pixel"), 
                     React.createElement("div", {className: "icon-wrapper"}, 
                         React.createElement("i", {className: "social"}), 
                         React.createElement("i", {className: "social"}), 

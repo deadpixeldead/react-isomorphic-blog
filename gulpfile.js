@@ -5,12 +5,14 @@ var gulp = require('gulp'),
     reactify = require('reactify'),
     package = require('./package.json'),
     nodemon = require('nodemon'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    livereload = require('gulp-livereload');
 
 gulp.task('sass', function () {
     return gulp.src('./src/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest('./public/css'))
+        .pipe(livereload());
 });
 
 gulp.task('sass:watch', function () {
@@ -18,15 +20,19 @@ gulp.task('sass:watch', function () {
 });
 
 
+
+
 gulp.task('bundle', function() {
     return browserify(package.paths.app)
         .transform('reactify', {stripTypes: true, es6: true})
         .bundle()
         .pipe(source(package.dest.app))
-        .pipe(gulp.dest(package.dest.dist));
+        .pipe(gulp.dest(package.dest.dist))
+        .pipe(livereload());
 });
 
 gulp.task('watch', function () {
+    livereload.listen();
     gulp.watch(['src/**/*.js', 'src/**/*.jsx'],['bundle']);
     gulp.watch('./src/scss/*.scss', ['sass']);
 
