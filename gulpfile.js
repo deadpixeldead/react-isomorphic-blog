@@ -4,7 +4,18 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
     reactify = require('reactify'),
     package = require('./package.json'),
-    nodemon = require('nodemon');
+    nodemon = require('nodemon'),
+    sass = require('gulp-sass');
+
+gulp.task('sass', function () {
+    return gulp.src('./src/scss/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('sass:watch', function () {
+    gulp.watch('./src/scss/*.scss', ['sass']);
+});
 
 
 gulp.task('bundle', function() {
@@ -17,6 +28,8 @@ gulp.task('bundle', function() {
 
 gulp.task('watch', function () {
     gulp.watch(['src/**/*.js', 'src/**/*.jsx'],['bundle']);
+    gulp.watch('./src/scss/*.scss', ['sass']);
+
 });
 
 gulp.task('nodemon', function () {
@@ -24,3 +37,5 @@ gulp.task('nodemon', function () {
         script: 'bin/www', ext: 'js jsx jade',ignore:["public/scripts/react/*"]
     });
 });
+
+gulp.task('default', ['bundle', 'sass', 'watch']);
