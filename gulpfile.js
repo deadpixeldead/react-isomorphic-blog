@@ -6,11 +6,27 @@ var gulp = require('gulp'),
     package = require('./package.json'),
     nodemon = require('nodemon'),
     sass = require('gulp-sass'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    autoprefixer = require('gulp-autoprefixer');
+
 
 gulp.task('sass', function () {
     return gulp.src('./src/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+        browsers: [
+            '> 1%',
+            'last 2 versions',
+            'firefox >= 4',
+            'safari 7',
+            'safari 8',
+            'IE 8',
+            'IE 9',
+            'IE 10',
+            'IE 11'
+        ],
+        cascade: false
+        }))
         .pipe(gulp.dest('./public/css'))
         .pipe(livereload());
 });
